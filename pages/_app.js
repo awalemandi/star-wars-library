@@ -1,7 +1,8 @@
-import '../styles/globals.scss'
+import '../styles/globals.scss';
+import { ThemeProvider } from '../context/ThemeContext';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function MyApp ( { Component, pageProps } ) {
+  return <ThemeProvider><Component { ...pageProps } /></ThemeProvider>;
 }
 
-export default MyApp
+export default MyApp;

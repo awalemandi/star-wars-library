@@ -4,8 +4,6 @@ $primary-white: #ffffff;
 $primary-gray: #dcdcdc;
 $secondary-gray: #f6f6f6;
 $primary-red: #ff0000;
-$logo-black: url('../images/logo_black.png');
-$logo-white: url('../images/logo_white.png');
 
 // define css variables
 $bg: 'bg';
@@ -14,14 +12,12 @@ $text: 'text';
 $text-secondary: 'text-secondary';
 $link: 'link';
 $hover: 'hover';
-$logo: 'logo';
 $brand-blue: 'brand-blue';
 $brand-red: 'brand-red';
 $border: 'border';
 
 $themes: (
 	light: (
-		logo: $logo-black,
 		bg: $primary-white,
 		card-bg: $secondary-gray,
 		text: $primary-black,
@@ -29,7 +25,6 @@ $themes: (
 		border: $primary-black,
 	),
 	dark: (
-		logo: $logo-white,
 		bg: $primary-black,
 		card-bg: $primary-gray,
 		text: $primary-white,

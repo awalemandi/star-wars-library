@@ -1,0 +1,62 @@
+//define palette variables
+$primary-black: #1f2426;
+$primary-white: #ffffff;
+$primary-gray: #dcdcdc;
+$secondary-gray: #f6f6f6;
+$primary-red: #ff0000;
+$logo-black: url('../images/logo_black.png');
+$logo-white: url('../images/logo_white.png');
+
+// define css variables
+$bg: 'bg';
+$card-bg: 'card-bg';
+$text: 'text';
+$text-secondary: 'text-secondary';
+$link: 'link';
+$hover: 'hover';
+$logo: 'logo';
+$brand-blue: 'brand-blue';
+$brand-red: 'brand-red';
+$border: 'border';
+
+$themes: (
+	light: (
+		logo: $logo-black,
+		bg: $primary-white,
+		card-bg: $secondary-gray,
+		text: $primary-black,
+		hover: $primary-gray,
+		border: $primary-black,
+	),
+	dark: (
+		logo: $logo-white,
+		bg: $primary-black,
+		card-bg: $primary-gray,
+		text: $primary-white,
+		hover: $secondary-gray,
+		border: $primary-white,
+	),
+);
+
+@mixin themed() {
+	@each $theme, $map in $themes {
+		.theme--#{$theme} & {
+			$theme-map: () !global;
+			@each $key, $submap in $map {
+				$value: map-get(map-get($themes, $theme), '#{$key}');
+				$theme-map: map-merge(
+					$theme-map,
+					(
+						$key: $value,
+					)
+				) !global;
+			}
+			@content;
+			$theme-map: null !global;
+		}
+	}
+}
+
+@function t($key) {
+	@return map-get($theme-map, $key);
+}

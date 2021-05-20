@@ -17,6 +17,7 @@
 	justify-content: space-between;
 	align-items: center;
 }
+
 .logo {
 	width: 6rem;
 	height: 2.3rem;
@@ -28,6 +29,12 @@
 		height: 1.5rem;
 		margin: 0;
 	}
+}
+
+.themeIcon {
+	width: 4rem;
+	height: auto;
+	cursor: pointer;
 }
 
 .navItemsContainer {
@@ -50,18 +57,17 @@
 	text-align: center;
 	cursor: pointer;
 
-		// &:hover {
-		// 	@include themify() {
-		// 		border-bottom: 3px solid themed($hover);
-		// 	}
-	
-		// }
-	
-		&.active {
-			// transition: all 0.1s;
-			border-bottom: 3px solid black;
-		}
+	// &:hover {
+	// 	@include themify() {
+	// 		border-bottom: 3px solid themed($hover);
+	// 	}
 
+	// }
+
+	&.active {
+		// transition: all 0.1s;
+		border-bottom: 3px solid black;
+	}
 
 	@include mediumScreen() {
 		display: none;

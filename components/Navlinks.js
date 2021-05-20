@@ -1,8 +1,11 @@
+import styles from '../styles/Nav.module.scss';
+
 function Navlinks () {
     return (
-        <header className={''}>
-            
-        </header>
+        <div className={ styles.navLinks }>
+            <link>Movies</link>
+            <link>Characters</link>
+        </div>
     );
 }
 

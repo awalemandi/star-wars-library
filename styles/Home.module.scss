@@ -1,8 +1,14 @@
 @import '../styles/mixins';
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
-.container {
+.root {
+	height: 100vh;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	
 	@include themify() {
-        background-color: themed(bg);
+		background-color: themed($bg);
+		color: themed($text);
 	}
 }

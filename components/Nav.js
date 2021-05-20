@@ -1,9 +1,9 @@
 
 import { useTheme } from '../context/ThemeContext';
+import Link from 'next/link';
 import styles from '../styles/Nav.module.scss';
 import darkLogo from '../public/images/logo_white.png';
 import lightLogo from '../public/images/logo_black.png';
-import Navlinks from './Navlinks';
 import Search from './Search';
 import { HiOutlineMenuAlt4 } from 'react-icons/hi';
 
@@ -17,12 +17,18 @@ function Nav() {
                 src={darkMode ? darkLogo : lightLogo}
                 alt='logo'
             />
-            <div className={styles.itemsContainer}>
-                <Navlinks />
+            <div className={styles.navItemsContainer}>
+                <Link href="/" >
+                    <div className={styles.linkItem}>Movies</div>
+                </Link>
+
+                <Link href="/characters" >
+                    <div className={styles.linkItem}>Characters</div>
+                </Link>
                 <Search />
-                <div className={styles.mobileIcon}>
-                    <HiOutlineMenuAlt4 />
-                </div>
+            </div>
+            <div className={styles.mobileIcon}>
+                <HiOutlineMenuAlt4 />
             </div>
         </div>
     );

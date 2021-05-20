@@ -1,10 +1,23 @@
-import styles from '../styles/Nav.module.scss';
+import styles from '../styles/Navlinks.module.scss';
+import Link from 'next/link';
 
-function Navlinks () {
+
+function Navlinks() {
     return (
-        <div className={ styles.navLinks }>
-            <link>Movies</link>
-            <link>Characters</link>
+        <div className={styles.container}>
+
+            <a >
+                <Link href="/" >
+                    Movie
+                </Link>
+            </a>
+
+
+
+            <Link href="/characters" className={styles.linkItem}>
+                characters
+                    </Link>
+
         </div>
     );
 }

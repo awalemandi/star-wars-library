@@ -10,20 +10,27 @@ import { HiOutlineMenuAlt4 } from 'react-icons/hi';
 
 function Nav() {
     const [darkMode, setDarkMode] = useTheme();
+
+    const handleTheme = () => {
+        setDarkMode(!darkMode);
+    }
     return (
         <div className={styles.navbarContainer}>
+            <div className={styles.iconsContainer}>
             <img
                 className={styles.logo}
                 src={darkMode ? darkLogo : lightLogo}
                 alt='logo'
             />
+            <button onClick={handleTheme}>ICON</button>
+            </div>
             <div className={styles.navItemsContainer}>
                 <Link href="/" >
-                    <div className={styles.linkItem}>Movies</div>
+                    <div className={styles.linkItem}>MOVIES</div>
                 </Link>
 
                 <Link href="/characters" >
-                    <div className={styles.linkItem}>Characters</div>
+                    <div className={styles.linkItem}>CHARACTERS</div>
                 </Link>
                 <Search />
             </div>

@@ -2,8 +2,8 @@
 
 .navbarContainer {
 	width: 100%;
-	padding: 0 2rem;
-	height: 3.5rem;
+	padding: 0 2%;
+	height: 4rem;
 	margin-top: 0;
 	position: sticky;
 	display: flex;
@@ -11,11 +11,15 @@
 	align-items: center;
 }
 
-.logo {
+.iconsContainer {
 	margin-left: 15px;
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.logo {
 	width: 6rem;
 	height: 2.3rem;
-	background: transparent;
 	justify-self: flex-start;
 	cursor: pointer;
 
@@ -27,32 +31,40 @@
 }
 
 .navItemsContainer {
-	width: 40rem;
+	width: 35rem;
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	@include mediumScreen() {
+		justify-content: center;
+	}
 }
 
 .linkItem {
-	align-items: center;
-	text-decoration: none;
-	padding: 0 rem;
+	font-size: 1.2rem;
+	font-weight: 700;
+	width: 6.5rem;
+	height: 90%;
+	padding: 1rem 0;
+	text-align: center;
 	cursor: pointer;
 
-	&:hover {
-		@include themify() {
-			border: 3px solid themed($border);
-			color: red;
-			margin: 100px;
+		// &:hover {
+		// 	@include themify() {
+		// 		border-bottom: 3px solid themed($hover);
+		// 	}
+	
+		// }
+	
+		&.active {
+			// transition: all 0.1s;
+			border-bottom: 3px solid black;
 		}
-	}
 
-	&.active {
-		@include themify() {
-			transition: all 0.1s;
-			border-bottom: 3px solid themed($border);
-		}
+
+	@include mediumScreen() {
+		display: none;
 	}
 }
 

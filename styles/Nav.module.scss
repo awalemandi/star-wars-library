@@ -1,4 +1,8 @@
 @import '/styles/mixins';
 
 .logo {
+	width: 50px;
+	@include themify() {
+		background-color: theme($bg);
+	}
 }

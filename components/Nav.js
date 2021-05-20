@@ -10,7 +10,7 @@ function Nav () {
     return (
         <div>
             <Image
-                // className={ styles.logo }
+                className={ styles.logo }
                 src={ darkMode ? darkLogo : lightLogo }
                 alt='logo'
                 width={ 100 }

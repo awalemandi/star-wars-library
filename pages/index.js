@@ -2,10 +2,11 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
 import Nav from '../components/Nav';
 import { useTheme } from '../context/ThemeContext';
+import Results from '../components/Results';
 
 
 export default function Home () {
-  const [ darkMode, setDarkMode ] = useTheme();
+  const [ darkMode ] = useTheme();
   return (
     <div className={ darkMode ? styles.dark : styles.light }>
       <div className={ styles.root }>
@@ -15,8 +16,7 @@ export default function Home () {
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
         <Nav />
-        <h1>This supposed to look cool.</h1>
-        <p>What the actual?</p>
+        <Results />
       </div>
     </div>
   );

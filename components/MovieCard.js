@@ -15,8 +15,8 @@ function MovieCard({ eps, title, release }) {
                 {favorite ? <RiHeart3Fill /> : <RiHeartAddLine />}
             </div>
             <div className={styles.movieDetails}>
-                <div className={styles.movieTitle}>A New Hope</div>
-                <div className={styles.movieInfo}><p>Episode:4</p> <p>1977-05-25</p></div>
+                <div className={styles.movieTitle}>{title}</div>
+                <div className={styles.movieInfo}><p>Episode:{eps}</p> <p>{release}</p></div>
             </div>
         </div>
     );

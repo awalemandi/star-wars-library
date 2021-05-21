@@ -18,7 +18,7 @@ function Nav() {
         setDarkMode(!darkMode);
     };
     return (
-        <div className={styles.navbarContainer}>
+        <nav className={styles.navbarContainer}>
             <div className={styles.iconsContainer}>
                 <Link href="/" >
                     <img
@@ -44,7 +44,7 @@ function Nav() {
                 </Link>
                 <Search />
             </div>
-        </div>
+        </nav>
     );
 }
 

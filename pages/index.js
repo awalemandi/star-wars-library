@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.scss';
 import Nav from '../components/Nav';
 import { useTheme } from '../context/ThemeContext';
 import MovieResults from '../components/MovieResults';
+import Footer from '../components/Footer';
 
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         </Head>
         <Nav />
         <MovieResults />
+        <Footer />
       </div>
     </div>
   );

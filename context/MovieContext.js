@@ -1,4 +1,5 @@
 import { useContext, createContext, useState } from 'react';
+import useFetch from '../hooks/useFetch';
 
 const MovieContext = createContext();
 const FavoriteContext = createContext();
@@ -12,10 +13,10 @@ export function useFavorite() {
 }
 
 export function MovieProvider({ children }) {
-    const [movies, setMovies] = useState([]);
+    const [movies, loading] = useFetch('https://swapi.dev/api/films/');
     const [favorites, setFavorites] = useState([]);
     return (
-        <MovieContext.Provider value={[movies, setMovies]}>
+        <MovieContext.Provider value={[movies, loading]}>
             <FavoriteContext.Provider value={[favorites, setFavorites]}>
                 {children}
             </FavoriteContext.Provider>

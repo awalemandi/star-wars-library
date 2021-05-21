@@ -8,7 +8,6 @@ import lightLogo from '../public/images/logo_black.png';
 import darkIcon from '../public/images/dark_icon.png';
 import lightIcon from '../public/images/light_icon.png';
 import Search from './Search';
-import { HiOutlineMenuAlt4 } from 'react-icons/hi';
 
 
 function Nav() {
@@ -34,7 +33,6 @@ function Nav() {
                     alt='toggle theme'
                     onClick={handleTheme}
                 />
-                {/* <button onClick={handleTheme}>ICON</button> */}
             </div>
             <div className={styles.navItemsContainer}>
                 <Link href="/" >
@@ -45,9 +43,6 @@ function Nav() {
                     <div className={router.pathname == '/characters/' ? styles.activeLinkItem : styles.linkItem}>CHARACTERS</div>
                 </Link>
                 <Search />
-            </div>
-            <div className={styles.mobileIcon}>
-                <HiOutlineMenuAlt4 />
             </div>
         </div>
     );

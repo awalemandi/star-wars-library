@@ -9,6 +9,10 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	@include mediumScreen() {
+		padding: 0;
+	}
 }
 
 .iconsContainer {
@@ -40,6 +44,7 @@
 
 	@include mediumScreen() {
 		width: 3rem;
+		margin: 1rem;
 	}
 }
 
@@ -49,9 +54,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	@include mediumScreen() {
-		justify-content: center;
-	}
 }
 
 .linkItem {
@@ -74,7 +76,8 @@
 	}
 
 	@include mediumScreen() {
-		display: none;
+		font-size: 1rem;
+		width: auto;
 	}
 }
 
@@ -91,27 +94,31 @@
 	}
 }
 
-.mobileIcon {
-	display: none;
-	@media screen and (max-width: 768px) {
-		display: flex;
-		font-size: 1.8rem;
-		cursor: pointer;
-		@include themify() {
-			color: themed($text);
+// .mobileIcon {
+// 	display: none;
+// 	@media screen and (max-width: 768px) {
+// 		display: flex;
+// 		font-size: 1.8rem;
+// 		cursor: pointer;
+// 		@include themify() {
+// 			color: themed($text);
 
-			&:hover {
-				transition: 0.2s ease-in-out;
-			}
-		}
-	}
-}
+// 			&:hover {
+// 				transition: 0.2s ease-in-out;
+// 			}
+// 		}
+// 	}
+// }
 
 .searchContainer {
 	display: inline-flex;
 	align-items: center;
 	height: 100%;
 	width: 15rem;
+	@include mediumScreen() {
+		width: 8rem;
+		margin-right: 1rem;
+	}
 }
 
 .searchButton {
@@ -126,6 +133,9 @@
 	@include themify() {
 		color: themed($text);
 	}
+	@include mediumScreen() {
+		width: 25%;
+	}
 }
 
 .search {
@@ -135,5 +145,8 @@
 
 	@include themify() {
 		border: 1px solid themed($border);
+	}
+	@include mediumScreen() {
+		width: 70%;
 	}
 }

@@ -19,7 +19,7 @@ function Search() {
                 type='text'
                 value={searchField}
             />
-            <button className={styles.searchButton}><FiSearch className={styles.searchIcon} /></button>
+            <button className={styles.searchButton}><FiSearch /></button>
         </div>
     );
 }

@@ -1,5 +1,6 @@
 
 import { useTheme } from '../context/ThemeContext';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from '../styles/Nav.module.scss';
 import darkLogo from '../public/images/logo_white.png';
@@ -10,39 +11,42 @@ import Search from './Search';
 import { HiOutlineMenuAlt4 } from 'react-icons/hi';
 
 
-function Nav () {
-    const [ darkMode, setDarkMode ] = useTheme();
+function Nav() {
+    const [darkMode, setDarkMode] = useTheme();
+    const router = useRouter();
 
     const handleTheme = () => {
-        setDarkMode( !darkMode );
+        setDarkMode(!darkMode);
     };
     return (
-        <div className={ styles.navbarContainer }>
-            <div className={ styles.iconsContainer }>
-                <img
-                    className={ styles.logo }
-                    src={ darkMode ? darkLogo : lightLogo }
-                    alt='logo'
-                />
-                <img
-                    className={ styles.themeIcon }
-                    src={ darkMode ? lightIcon : darkIcon }
-                    alt='toggle theme'
-                    onClick={ handleTheme }
-                />
-                {/* <button onClick={handleTheme}>ICON</button> */ }
-            </div>
-            <div className={ styles.navItemsContainer }>
+        <div className={styles.navbarContainer}>
+            <div className={styles.iconsContainer}>
                 <Link href="/" >
-                    <div className={ styles.linkItem }>MOVIES</div>
+                    <img
+                        className={styles.logo}
+                        src={darkMode ? darkLogo : lightLogo}
+                        alt='logo'
+                    />
+                </Link>
+                <img
+                    className={styles.themeIcon}
+                    src={darkMode ? darkIcon : lightIcon}
+                    alt='toggle theme'
+                    onClick={handleTheme}
+                />
+                {/* <button onClick={handleTheme}>ICON</button> */}
+            </div>
+            <div className={styles.navItemsContainer}>
+                <Link href="/" >
+                    <div className={router.pathname == '/' ? styles.activeLinkItem : styles.linkItem}>MOVIES</div>
                 </Link>
 
-                <Link href="/characters" >
-                    <div className={ styles.linkItem }>CHARACTERS</div>
+                <Link href="/characters/" >
+                    <div className={router.pathname == '/characters/' ? styles.activeLinkItem : styles.linkItem}>CHARACTERS</div>
                 </Link>
                 <Search />
             </div>
-            <div className={ styles.mobileIcon }>
+            <div className={styles.mobileIcon}>
                 <HiOutlineMenuAlt4 />
             </div>
         </div>

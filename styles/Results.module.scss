@@ -1,16 +1,27 @@
 @import '../styles/mixins';
+@import './Home.module.scss';
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
-.container {
-    margin-top: 5%;
-	width: 70%;
-	height: 90%;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
 
-	@include themify() {
-		background-color: themed($text);
-	}
+.root {
+    // @extend .root;
+    height: 100vh;
+	width: auto;
+	margin: 0;
+	padding: 0 5rem;
+
+    .resultsContainer {
+        margin-top: 5%;
+        width:80%;
+        min-width: none;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    
+        @include themify() {
+            background-color: themed($card-bg);
+        }
+    }
 }

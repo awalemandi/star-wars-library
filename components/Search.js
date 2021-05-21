@@ -1,6 +1,6 @@
 import { FiSearch } from 'react-icons/fi';
 import { useSearch } from '../context/SearchContext';
-import styles from '../styles/Nav.module.scss';
+import styles from '../styles/Home.module.scss';
 
 function Search() {
     const [searchField, setSearchField] = useSearch();

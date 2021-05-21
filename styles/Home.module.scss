@@ -1,4 +1,4 @@
-@import '../styles/mixins';
+@import './mixins';
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 .root {
@@ -18,5 +18,161 @@
 
 	@include mediumScreen() {
 		padding: 0;
+	}
+
+	.navbarContainer {
+		width: 100%;
+		padding: 0 2%;
+		height: 4rem;
+		margin-top: 0;
+		position: sticky;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		@include mediumScreen() {
+			padding: 0;
+		}
+	}
+
+	.iconsContainer {
+		margin-left: 15px;
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
+
+		@include mediumScreen() {
+			margin: 0;
+		}
+	}
+
+	.logo {
+		width: 6rem;
+		height: 2.3rem;
+		justify-self: flex-start;
+		cursor: pointer;
+
+		@include mediumScreen() {
+			display: none;
+		}
+	}
+
+	.themeIcon {
+		width: 4rem;
+		height: auto;
+		cursor: pointer;
+
+		@include mediumScreen() {
+			width: 3rem;
+			margin: 1rem;
+		}
+	}
+
+	.navItemsContainer {
+		width: 35rem;
+		height: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.linkItem {
+		font-size: 1.2rem;
+		font-weight: 700;
+		width: 6.5rem;
+		height: 90%;
+		padding: 1rem 0;
+		text-align: center;
+		cursor: pointer;
+
+		&:hover {
+			@include themify() {
+				border-bottom: 3px solid themed($hover);
+			}
+		}
+
+		@include mediumScreen() {
+			font-size: 1rem;
+			width: auto;
+		}
+	}
+
+	.activeLinkItem {
+		@extend .linkItem;
+
+		@include themify() {
+			border-bottom: 4px solid themed($text);
+
+			&:hover {
+				border-bottom: 4px solid themed($text);
+			}
+		}
+	}
+
+	// .mobileIcon {
+	// 	display: none;
+	// 	@media screen and (max-width: 768px) {
+	// 		display: flex;
+	// 		font-size: 1.8rem;
+	// 		cursor: pointer;
+	// 		@include themify() {
+	// 			color: themed($text);
+
+	// 			&:hover {
+	// 				transition: 0.2s ease-in-out;
+	// 			}
+	// 		}
+	// 	}
+	// }
+
+	.searchContainer {
+		display: inline-flex;
+		align-items: center;
+		height: 100%;
+		width: 15rem;
+		@include mediumScreen() {
+			width: 8rem;
+			margin-right: 1rem;
+		}
+	}
+
+	.searchButton {
+		width: 15%;
+		height: 50%;
+		margin-left: auto;
+		display: inline-flex;
+		align-items: center;
+		border-radius: 25%;
+		cursor: pointer;
+
+		@include themify() {
+			color: themed($text);
+			background-color: themed($bg);
+			border: 1px solid themed($border);
+
+			&:hover {
+				color: themed($bg);
+				background-color: themed($text);
+
+			}
+		}
+		@include mediumScreen() {
+			width: 25%;
+		}
+	}
+
+	.search {
+		height: 50%;
+		width: 80%;
+		font-family: 'IBM Plex Mono', monospace, sans-serif;
+
+		@include themify() {
+			color: themed($text);
+			border: 1px solid themed($border);
+			background-color: themed($bg);
+		}
+		@include mediumScreen() {
+			width: 70%;
+		}
 	}
 }

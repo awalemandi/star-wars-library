@@ -16,7 +16,7 @@ $border: 'border';
 $themes: (
 	light: (
 		bg: $primary-white,
-		card-bg: $secondary-gray,
+		card-bg: $primary-gray,
 		text: $primary-black,
 		hover: $primary-gray,
 		border: $primary-black,
@@ -25,7 +25,7 @@ $themes: (
 		bg: $primary-black,
 		card-bg: $primary-gray,
 		text: $primary-white,
-		hover: $secondary-gray,
+		hover: $primary-gray,
 		border: $primary-white,
 	),
 );

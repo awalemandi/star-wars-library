@@ -2,7 +2,7 @@
 import { useTheme } from '../context/ThemeContext';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import styles from '../styles/Nav.module.scss';
+import styles from '../styles/Home.module.scss';
 import darkLogo from '../public/images/logo_white.png';
 import lightLogo from '../public/images/logo_black.png';
 import darkIcon from '../public/images/dark_icon.png';

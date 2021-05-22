@@ -223,14 +223,12 @@
 		}
 
 		.favoriteButton {
-			font-size: 1.8rem;
 			align-self: center;
 			cursor: pointer;
 			opacity: 0.6;
 
 			@include mediumScreen() {
-				font-size: 1.5rem;
-				padding: 0;
+				padding: 1rem;
 				opacity: 1;
 			}
 

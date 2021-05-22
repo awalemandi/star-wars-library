@@ -2,7 +2,6 @@
 import { useTheme } from '../context/ThemeContext';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import styles from '../styles/Home.module.scss';
 import darkLogo from '../public/images/logo_white.png';
 import lightLogo from '../public/images/logo_black.png';
 import darkIcon from '../public/images/dark_icon.png';
@@ -18,25 +17,25 @@ function Nav() {
         setDarkMode(!darkMode);
     };
     return (
-        <nav className={styles.navbarContainer}>
-            <div className={styles.iconsContainer}>
+        <nav>
+            <div className={`iconsContainer`}>
                 <Link href="/" >
                     <img
-                        className={styles.logo}
+                        className={`logo`}
                         src={darkMode ? darkLogo : lightLogo}
                         alt='logo'
                     />
                 </Link>
                 <img
-                    className={styles.themeIcon}
+                    className={`themeIcon`}
                     src={darkMode ? darkIcon : lightIcon}
                     alt='toggle theme'
                     onClick={handleTheme}
                 />
             </div>
-            <div className={styles.navItemsContainer}>
+            <div className={`navItemsContainer`}>
                 <Link href="/" >
-                    <div className={router.pathname == '/' ? styles.activeLinkItem : styles.linkItem}>HOME</div>
+                    <div className={router.pathname == '/' ? `activeLinkItem` : `linkItem`}>HOME</div>
                 </Link>
 
                 {/* <Link href="/characters/" >

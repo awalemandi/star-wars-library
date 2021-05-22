@@ -1,6 +1,5 @@
 import { FiSearch } from 'react-icons/fi';
 import { useSearch } from '../context/SearchContext';
-import styles from '../styles/Home.module.scss';
 
 function Search() {
     const [searchField, setSearchField] = useSearch();
@@ -10,16 +9,16 @@ function Search() {
     };
 
     return (
-        <div className={styles.searchContainer}>
+        <div className={`searchContainer`}>
 
             <input
-                className={styles.search}
+                className={`search`}
                 onChange={handleChange}
                 placeholder='Search...'
                 type='text'
                 value={searchField}
             />
-            {/* <button className={styles.searchButton}><FiSearch /></button> */}
+            {/* <button className={`searchButton`}><FiSearch /></button> */}
         </div>
     );
 }

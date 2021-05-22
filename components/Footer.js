@@ -1,4 +1,3 @@
-import styles from '../styles/Home.module.scss';
 
 const Copyright = () => {
     return (
@@ -15,7 +14,7 @@ const Copyright = () => {
 
 function Footer() {
     return (
-        <footer className={styles.footer}>
+        <footer>
             <Copyright />
         </footer>
     );

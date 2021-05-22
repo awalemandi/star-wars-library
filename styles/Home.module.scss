@@ -68,46 +68,7 @@
 		}
 	}
 
-	.navItemsContainer {
-		width: 35rem;
-		height: 100%;
-		display: flex;
-		justify-content: space-evenly;
-		align-items: center;
-
-		.linkItem {
-			font-size: 1.2rem;
-			font-weight: 700;
-			width: 6.5rem;
-			height: 90%;
-			padding: 1rem 0;
-			text-align: center;
-			cursor: pointer;
-
-			&:hover {
-				@include themify() {
-					border-bottom: 3px solid themed($hover);
-				}
-			}
-
-			@include mediumScreen() {
-				font-size: 1rem;
-				width: auto;
-			}
-		}
-
-		.activeLinkItem {
-			@extend .linkItem;
-
-			@include themify() {
-				border-bottom: 4px solid themed($text);
-
-				&:hover {
-					border-bottom: 4px solid themed($text);
-				}
-			}
-		}
-	}
+	
 
 	.searchContainer {
 		display: inline-flex;

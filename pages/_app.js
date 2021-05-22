@@ -1,21 +1,32 @@
-import { ThemeProvider } from '../context/ThemeContext';
+import { ThemeProvider, useTheme } from '../context/ThemeContext';
 import { SearchProvider } from '../context/SearchContext';
 import '../styles/globals.scss';
 import Layout from '../components/Layout';
-import { MovieProvider } from '../context/MovieContext';
+import { MovieProvider, useMovieFetch } from '../context/MovieContext';
 
-function Home({ Component, pageProps }) {
-  return (
+function withContext(Component) {
+  return (props) => (
     <ThemeProvider>
       <SearchProvider>
         <MovieProvider>
-          {/* <Layout> */}
-          <Component {...pageProps} />
-          {/* </Layout> */}
+          <Component {...props} />
         </MovieProvider>
       </SearchProvider>
     </ThemeProvider>
   );
 }
 
-export default Home;
+function Home({ Component, pageProps }) {
+  const [darkMode] = useTheme();
+  return (
+
+    <div className={darkMode ? `dark`: `light`}>
+      {/* <Layout> */}
+      <Component {...pageProps} />
+      {/* </Layout> */}
+    </div>
+
+  );
+}
+
+export default withContext(Home);

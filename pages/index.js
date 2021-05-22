@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 export default function Home() {
   const [darkMode] = useTheme();
   return (
-    <div className={darkMode ? styles.dark : styles.light}>
+    // <div className={darkMode ? styles.dark : styles.light}>
       <div className={styles.root}>
         <Head>
           <title>Star Wars Library</title>
@@ -19,6 +19,6 @@ export default function Home() {
         <MovieResults />
         <Footer />
       </div>
-    </div>
+    // </div>
   );
 }

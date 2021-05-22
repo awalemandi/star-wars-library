@@ -12,34 +12,42 @@ function MovieResults({ }) {
     const [filteredMovies, setFilteredMovies] = useState([]);
 
     const filterMovies = () => {
-
+        if (!loading) {
+            try {
+                console.log(movies);
+                setFilteredMovies(
+                    movies.filter(movie =>
+                        movie.title.toLowerCase().includes(searchField.toLowerCase())
+                    ));
+            } catch (error) { console.log(error); };
+        }
     };
 
     useEffect(() => {
-        if (!loading) {
-            console.log(movies);
-            setFilteredMovies(
-                movies.filter(movie =>
-                    movie.title.toLowerCase().includes(searchField.toLowerCase())
-                ))
-        }
-    }, [searchField, movies, favorites]);
+        let mounted = true;
+        mounted && filterMovies();
 
-    return (
+        return () => {
+            mounted = false;
+        };
+    }, [searchField, favorites]);
+
+    return loading ? (
+        <div className={styles.resultsContainer}>Loading...</div>
+    ) : (
         <div className={styles.resultsContainer}>
-            {loading ? (<h2>Loading..</h2>)
-                : (!filteredMovies ?
-                    (<h2>Could not find any movies :/</h2>)
-                    :
-                    (
-                        filteredMovies.map(movie =>
-                            <MovieCard
-                                key={movie.episode_id}
-                                eps={movie.episode_id}
-                                title={movie.title}
-                                release={movie.release_date}
-                            />))
-                )}
+            {!filteredMovies ? (
+                <h2>Could not find any movies :/</h2>
+            ) : (
+                filteredMovies.map(movie => (
+                    <MovieCard
+                        key={movie.episode_id}
+                        eps={movie.episode_id}
+                        title={movie.title}
+                        release={movie.release_date}
+                    />
+                ))
+            )}
         </div>
     );
 }

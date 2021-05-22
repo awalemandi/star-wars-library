@@ -5,7 +5,7 @@ import { useTheme } from '../context/ThemeContext';
 import MovieResults from '../components/MovieResults';
 import Footer from '../components/Footer';
 
-export default function Home({ }) {
+export default function Home() {
   const [darkMode] = useTheme();
   return (
     <div className={darkMode ? styles.dark : styles.light}>

@@ -3,7 +3,6 @@ import { useFavorite, useMovie } from '../context/MovieContext';
 import { useSearch } from '../context/SearchContext';
 import styles from '../styles/Home.module.scss';
 import MovieCard from './MovieCard';
-import axios from 'axios';
 
 function MovieResults({ }) {
     const [searchField] = useSearch();
@@ -12,25 +11,22 @@ function MovieResults({ }) {
     const [filteredMovies, setFilteredMovies] = useState([]);
 
     const filterMovies = () => {
-        if (!loading) {
-            try {
-                console.log(movies);
-                setFilteredMovies(
-                    movies.filter(movie =>
-                        movie.title.toLowerCase().includes(searchField.toLowerCase())
-                    ));
-            } catch (error) { console.log(error); };
-        }
+        try {
+            movies && setFilteredMovies(
+                movies.filter(film =>
+                    film.title.toLowerCase().includes(searchField.toLowerCase())
+                ));
+        } catch (error) { console.log(error); }
     };
 
     useEffect(() => {
         let mounted = true;
-        mounted && filterMovies();
 
+        filterMovies();
         return () => {
             mounted = false;
         };
-    }, [searchField, favorites]);
+    }, [searchField, movies, favorites]);
 
     return loading ? (
         <div className={styles.resultsContainer}>Loading...</div>

@@ -1,4 +1,4 @@
-import styles from '../styles/Home.module.scss';
+import '../styles/Home.scss'
 import { RiHeartAddLine, RiHeart3Fill } from 'react-icons/ri';
 import { useState, useEffect } from 'react';
 import { useFavorite } from '../context/MovieContext';

@@ -20,10 +20,10 @@ function Home({ Component, pageProps }) {
   const [darkMode] = useTheme();
   return (
 
-    <div className={darkMode ? `dark`: `light`}>
-      {/* <Layout> */}
-      <Component {...pageProps} />
-      {/* </Layout> */}
+    <div className={darkMode ? `dark` : `light`}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </div>
 
   );

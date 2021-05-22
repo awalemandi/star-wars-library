@@ -53,7 +53,7 @@ $themes: (
 	@return map-get($theme-map, $key);
 }
 
-@mixin mediumScreen() {
+@mixin md() {
 	@media screen and (max-width: 768px) {
 		@content;
 	}

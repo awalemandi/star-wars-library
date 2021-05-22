@@ -1,25 +1,40 @@
-import { useContext, createContext, useState } from 'react';
+import { useContext, createContext, useState, useEffect } from 'react';
 import useFetch from '../hooks/useFetch';
 
-const MovieContext = createContext();
-const FavoriteContext = createContext();
+const MovieFetchContext = createContext();
+const MovieListContext = createContext();
 
-export function useMovie() {
-    return useContext(MovieContext);
+export function useMovieFetch() {
+    return useContext(MovieFetchContext);
 }
 
-export function useFavorite() {
-    return useContext(FavoriteContext);
+export function useMovieList() {
+    return useContext(MovieListContext);
 }
 
 export function MovieProvider({ children }) {
-    const [movies, loading] = useFetch('https://swapi.dev/api/films/');
-    const [favorites, setFavorites] = useState([]);
+    const [movieData, loading] = useFetch('https://swapi.dev/api/films/');
+    const [movieList, setMovieList] = useState([]);
+
+
+    useEffect(() => {
+        let mounted = true;
+
+        const getMovieList = async () => {
+            const list = await movieData;
+            setMovieList(movieData);
+        };
+
+        mounted && getMovieList();
+        return () => { mounted = false; };
+
+    }, [movieData]);
+
     return (
-        <MovieContext.Provider value={[movies, loading]}>
-            <FavoriteContext.Provider value={[favorites, setFavorites]}>
+        <MovieFetchContext.Provider value={[loading]}>
+            <MovieListContext.Provider value={[movieList, setMovieList]}>
                 {children}
-            </FavoriteContext.Provider>
-        </MovieContext.Provider>
+            </MovieListContext.Provider>
+        </MovieFetchContext.Provider>
     );
 }

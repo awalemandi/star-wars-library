@@ -3,34 +3,23 @@ import { RiHeartAddLine, RiHeart3Fill } from 'react-icons/ri';
 import { useState, useEffect } from 'react';
 import { useFavorite } from '../context/MovieContext';
 
-function MovieCard({ eps, title, release }) {
-    const [favorites, setFavorites] = useFavorite();
+function MovieCard({ eps, title, release, updateList }) {
     const [favorite, setFavorite] = useState(false);
 
-    const updateFavorites = () => {
-        const film = {
-            episode_id: eps,
-            title: title,
-            release_date: release
-        };
-        if (favorite) {
-            const newFavorites = [...favorites, film];
-            setFavorites([...new Set(newFavorites)]);
-        } else {
-            const newFavorites = favorites.filter(film => film.episode_id !== eps);
-            setFavorites(newFavorites);
-        }
+    const toggleFavorite = () => {
+        setFavorite(favorite => !favorite);
+        updateList(eps);
     };
 
-    const toggleFavorite = () => setFavorite(favorite => !favorite);
+    // useEffect(() => {
+    //     let mounted = true;
 
-    useEffect(() => {
-        let mounted = true;
-        mounted && updateFavorites();
-        return () => {
-            mounted = false;
-        };
-    }, [favorite]);
+    //     mounted && updateMovieList();
+
+    //     return () => {
+    //         mounted = false;
+    //     };
+    // }, [favorite]);
 
     return (
         <div className={styles.movieCard}>

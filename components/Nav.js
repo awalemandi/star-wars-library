@@ -36,12 +36,12 @@ function Nav() {
             </div>
             <div className={styles.navItemsContainer}>
                 <Link href="/" >
-                    <div className={router.pathname == '/' ? styles.activeLinkItem : styles.linkItem}>MOVIES</div>
+                    <div className={router.pathname == '/' ? styles.activeLinkItem : styles.linkItem}>HOME</div>
                 </Link>
 
-                <Link href="/characters/" >
+                {/* <Link href="/characters/" >
                     <div className={router.pathname == '/characters/' ? styles.activeLinkItem : styles.linkItem}>CHARACTERS</div>
-                </Link>
+                </Link> */}
                 <Search />
             </div>
         </nav>

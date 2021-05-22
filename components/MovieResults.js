@@ -7,7 +7,7 @@ import MovieCard from './MovieCard';
 function MovieResults({ }) {
     const [searchField] = useSearch();
     const [movies, loading] = useMovie();
-    const [favorites, setFavorites] = useFavorite();
+    const [favorites] = useFavorite();
     const [filteredMovies, setFilteredMovies] = useState([]);
 
     const filterMovies = () => {
@@ -20,18 +20,24 @@ function MovieResults({ }) {
     };
 
     useEffect(() => {
-        let mounted = true;
-
+        console.log(favorites);
         filterMovies();
-        return () => {
-            mounted = false;
-        };
     }, [searchField, movies, favorites]);
 
     return loading ? (
-        <div className={styles.resultsContainer}>Loading...</div>
+        <div className={styles.resultsContainer}><h2>Loading...</h2></div>
     ) : (
         <div className={styles.resultsContainer}>
+            {/* {
+                favorites.map(movie => (
+                    <MovieCard
+                        key={movie.episode_id}
+                        eps={movie.episode_id}
+                        title={movie.title}
+                        release={movie.release_date}
+                    />
+                ))
+            } */}
             {!filteredMovies ? (
                 <h2>Could not find any movies :/</h2>
             ) : (
@@ -44,6 +50,7 @@ function MovieResults({ }) {
                     />
                 ))
             )}
+
         </div>
     );
 }

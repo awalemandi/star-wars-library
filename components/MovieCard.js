@@ -1,7 +1,9 @@
-import '../styles/Home.scss'
+// import styles from '../styles/Home.module.scss';
 import { RiHeartAddLine, RiHeart3Fill } from 'react-icons/ri';
 import { useState, useEffect } from 'react';
 import { useFavorite } from '../context/MovieContext';
+import Link from 'next/link';
+
 
 function MovieCard({ eps, title, release, updateList }) {
     const [favorite, setFavorite] = useState(false);
@@ -22,14 +24,16 @@ function MovieCard({ eps, title, release, updateList }) {
     // }, [favorite]);
 
     return (
-        <div className={styles.movieCard}>
-            <div className={styles.favoriteButton} onClick={toggleFavorite}>
+        <div className={`movieCard`}>
+            <div className={`favoriteButton`} onClick={toggleFavorite}>
                 {favorite ? <RiHeart3Fill /> : <RiHeartAddLine />}
             </div>
-            <div className={styles.movieDetails}>
-                <div className={styles.movieTitle}>{title}</div>
-                <div className={styles.movieInfo}><p>Episode:{eps}</p> <p>{release}</p></div>
-            </div>
+            <Link href={`/movies/${eps}`}>
+                <div className={`movieDetails`}>
+                    <div className={`movieTitle`}>{title}</div>
+                    <div className={`movieInfo`}><p>Episode:{eps}</p> <p>{release}</p></div>
+                </div>
+            </Link>
         </div>
     );
 }

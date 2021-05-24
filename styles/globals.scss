@@ -452,16 +452,61 @@ footer {
 	@include themify() {
 		color: themed($text);
 		background-color: themed($bg);
-		border: 1px solid themed($border);
+		border: 1px solid themed($text);
 
 		&:hover {
 			color: themed($bg);
 			background-color: themed($text);
+			border: 1px solid themed($bg);
 		}
 	}
 
 	@include md() {
 		margin: 0.25rem;
 		height: 1.5rem;
+	}
+}
+
+.Tooltip-Wrapper {
+	display: inline-block;
+	position: relative;
+}
+
+.Tooltip-Tip {
+	position: absolute;
+	border-radius: 4px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 6px;
+	font-size: 14px;
+	line-height: 1;
+	z-index: 100;
+	white-space: nowrap;
+
+	@include themify() {
+		color: themed($bg);
+		background-color: themed($text);
+	}
+}
+
+.Tooltip-Tip::before {
+	content: ' ';
+	left: 50%;
+	border: solid transparent;
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-width: 6px;
+	margin-left: calc(6px * -1);
+}
+
+.Tooltip-Tip.top {
+	top: calc(105px * -1);
+}
+.Tooltip-Tip.top::before {
+	top: 100%;
+	@include themify() {
+		border-top-color: themed($border);
 	}
 }

@@ -18,8 +18,6 @@ function CharacterChip({ url }) {
         );
     };
 
-
-
     return loading ? (
         <div className='characterChip'>
             <p>loading..</p>

@@ -6,19 +6,23 @@ import axios from 'axios';
 import CharacterChip from '../../components/CharacterChip';
 
 export const getStaticPaths = async () => {
-    const res = await axios.get('https://swapi.dev/api/films/');
-    const data = await res.data.results;
+    try {
+        const res = await axios.get('https://swapi.dev/api/films/');
+        const data = await res.data.results;
 
-    const paths = data.map(film => {
+        const paths = data.map(film => {
+            return {
+                params: { episode: film.episode_id.toString() }
+            };
+        });
+
         return {
-            params: { episode: film.episode_id.toString() }
+            paths,
+            fallback: false
         };
-    });
-
-    return {
-        paths,
-        fallback: false
-    };
+    } catch (error) {
+        console.log(error);
+    }
 };
 
 export const getStaticProps = async (context) => {
@@ -49,13 +53,17 @@ export default function Movie({ movie }) {
                     <h3>Directed by: {movie.director}</h3>
                     <h3>Produced by: {movie.producer}</h3>
                     <h3>Release: {movie.release_date}</h3>
+                    <h2>Crawling Text:</h2>
                     <p>{movie.opening_crawl}</p>
                     <h3>Characters:</h3>
-                    {console.log(movie.characters)}
                     <div className='characterContainer'>
                         {
                             movie.characters.map(
-                                characterUrl => <CharacterChip url={characterUrl} />
+                                characterUrl => <
+                                    CharacterChip
+                                    key={Math.random()*99}
+                                    url={characterUrl}
+                                />
                             )}
                     </div>
                 </div>

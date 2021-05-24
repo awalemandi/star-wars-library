@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AiOutlineConsoleSql } from 'react-icons/ai';
 import { useMovieFetch, useMovieList } from '../context/MovieContext';
 import { useSearch } from '../context/SearchContext';
 // import styles from '../styles/Home.module.scss';
@@ -11,28 +12,22 @@ function MovieResults({ }) {
     const [filteredMovies, setFilteredMovies] = useState([]);
 
 
-    const updateMovieList = id => {
+    const moveToTop = id => {
         if (movieList) {
-            // const updatedMovieList = movieList.forEach((film, i) => {
-            //     if (film.episode_id === id) {
-            //         movieList.splice(i, 1);
-            //         movieList.unshift(film);
-            //     }
-            // });
-            // setMovieList(updatedMovieList);
-            setMovieList(movieList => movieList.forEach((film, i) => {
-                if (film.episode_id === id) {
-                    movieList.splice(i, 1);
-                    movieList.unshift(film);
-                }
-            }));
+            const selectedMovie = filteredMovies.filter(film => film.episode_id === id)[0];
+            console.log(selectedMovie);
+            const updatedMovieList = filteredMovies.filter(film => film.episode_id !== id);
+            updatedMovieList.unshift(selectedMovie);
+            console.log(updatedMovieList);
+            setFilteredMovies(updatedMovieList);
         }
+
     };
 
 
     const filterMovies = () => {
         try {
-            movieList && setFilteredMovies(
+            setFilteredMovies(
                 movieList.filter(film =>
                     film.title.toLowerCase().includes(searchField.toLowerCase())
                 ));
@@ -40,8 +35,10 @@ function MovieResults({ }) {
     };
 
     useEffect(() => {
-        console.log(movieList);
-        movieList && filterMovies();
+        if (movieList) {
+            console.log(filteredMovies);
+            filterMovies();
+        }
     }, [searchField, movieList]);
 
     return loading ? (
@@ -52,13 +49,14 @@ function MovieResults({ }) {
                 <h2>Could not find any movies :/</h2>
             ) : (
                 filteredMovies.map(movie => (
-                        <MovieCard
-                            key={movie.episode_id}
-                            eps={movie.episode_id}
-                            title={movie.title}
-                            release={movie.release_date}
-                            updateList={updateMovieList}
-                        />
+                    <MovieCard
+                        key={movie.episode_id}
+                        url={movie.url}
+                        eps={movie.episode_id}
+                        title={movie.title}
+                        release={movie.release_date}
+                        updateList={moveToTop}
+                    />
                 ))
             )}
 

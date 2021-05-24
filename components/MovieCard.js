@@ -5,7 +5,7 @@ import { useFavorite } from '../context/MovieContext';
 import Link from 'next/link';
 
 
-function MovieCard({ eps, title, release, updateList }) {
+function MovieCard({ url, eps, title, release, updateList }) {
     const [favorite, setFavorite] = useState(false);
 
     const toggleFavorite = () => {
@@ -28,7 +28,7 @@ function MovieCard({ eps, title, release, updateList }) {
             <div className={`favoriteButton`} onClick={toggleFavorite}>
                 {favorite ? <RiHeart3Fill /> : <RiHeartAddLine />}
             </div>
-            <Link href={`/movies/${eps}`}>
+            <Link href={`/movies/${ eps }`}>
                 <div className={`movieDetails`}>
                     <div className={`movieTitle`}>{title}</div>
                     <div className={`movieInfo`}><p>Episode:{eps}</p> <p>{release}</p></div>

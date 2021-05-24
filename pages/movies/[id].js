@@ -12,7 +12,7 @@ export const getStaticPaths = async () => {
 
         const paths = data.map(film => {
             return {
-                params: { episode: film.episode_id.toString() }
+                params: { id: film.episode_id.toString() }
             };
         });
 
@@ -26,8 +26,8 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-    const episode = context.params.episode;
-    const res = await axios.get(`https://swapi.dev/api/films/${ episode }/`);
+    const id = context.params.id;
+    const res = await axios.get(`https://swapi.dev/api/films/${ id }/`);
     const data = await res.data;
 
     return {

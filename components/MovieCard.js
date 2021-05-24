@@ -10,7 +10,7 @@ function MovieCard({ url, eps, title, release, updateList }) {
 
     const toggleFavorite = () => {
         setFavorite(favorite => !favorite);
-        updateList(eps);
+        updateList(eps, favorite);
     };
 
     // useEffect(() => {

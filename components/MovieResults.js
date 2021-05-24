@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { AiOutlineConsoleSql } from 'react-icons/ai';
+import useLocalStorage from '../hooks/useLocalStorage';
 import { useMovieFetch, useMovieList } from '../context/MovieContext';
 import { useSearch } from '../context/SearchContext';
-// import styles from '../styles/Home.module.scss';
 import MovieCard from './MovieCard';
 
 function MovieResults({ }) {
@@ -12,16 +11,13 @@ function MovieResults({ }) {
     const [filteredMovies, setFilteredMovies] = useState([]);
 
 
-    const moveToTop = id => {
+    const moveToTop = (id, unfav) => {
         if (movieList) {
             const selectedMovie = filteredMovies.filter(film => film.episode_id === id)[0];
-            console.log(selectedMovie);
             const updatedMovieList = filteredMovies.filter(film => film.episode_id !== id);
-            updatedMovieList.unshift(selectedMovie);
-            console.log(updatedMovieList);
+            unfav ? updatedMovieList.push(selectedMovie) : updatedMovieList.unshift(selectedMovie);
             setFilteredMovies(updatedMovieList);
         }
-
     };
 
 
@@ -36,7 +32,6 @@ function MovieResults({ }) {
 
     useEffect(() => {
         if (movieList) {
-            console.log(filteredMovies);
             filterMovies();
         }
     }, [searchField, movieList]);

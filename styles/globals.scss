@@ -7,7 +7,6 @@ $font-size-big: 2.25rem;
 
 html,
 body {
-	height: 100vh;
 	min-height: 100vh;
 	width: 100%;
 	margin: 0;
@@ -15,6 +14,7 @@ body {
 	font-family: 'IBM Plex Mono', monospace, sans-serif;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 
 	@include themify() {
 		background-color: themed($bg);
@@ -228,7 +228,7 @@ footer {
 }
 
 .content {
-	height: 100vh;
+	// min-height: 30rem;
 	width: 100%;
 	margin: 0;
 	padding: 0 5rem;

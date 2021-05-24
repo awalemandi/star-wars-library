@@ -1,4 +1,3 @@
-
 import { useTheme } from '../../context/ThemeContext';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -37,10 +36,6 @@ function Nav() {
                 <Link href="/" >
                     <div className={router.pathname == '/' ? `activeLinkItem` : `linkItem`}>HOME</div>
                 </Link>
-
-                {/* <Link href="/characters/" >
-                    <div className={router.pathname == '/characters/' ? styles.activeLinkItem : styles.linkItem}>CHARACTERS</div>
-                </Link> */}
                 <Search />
             </div>
         </nav>

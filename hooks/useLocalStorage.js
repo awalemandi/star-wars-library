@@ -7,6 +7,7 @@ function useLocalStorage(key, initialValue) {
         try {
             // Get from local storage by key
             const item = window.localStorage.getItem(key);
+            console.log(item);
             // Parse stored json or if none return initialValue
             return item ? JSON.parse(item) : initialValue;
         } catch (error) {

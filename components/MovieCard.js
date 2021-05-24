@@ -1,27 +1,38 @@
-// import styles from '../styles/Home.module.scss';
 import { RiHeartAddLine, RiHeart3Fill } from 'react-icons/ri';
-import { useState, useEffect } from 'react';
-import { useFavorite } from '../context/MovieContext';
+import { useMovieList } from '../context/MovieContext';
 import Link from 'next/link';
 
 
-function MovieCard({ url, eps, title, release, updateList }) {
-    const [favorite, setFavorite] = useState(false);
+function MovieCard({ favorite, eps, title, release, updateList }) {
+    const [movieList, setMovieList] = useMovieList();
 
-    const toggleFavorite = () => {
-        setFavorite(favorite => !favorite);
-        updateList(eps, favorite);
+    const changeFavorite = (obj, fav) => {
+        return ({ ...obj, favorite: fav });
     };
 
-    // useEffect(() => {
-    //     let mounted = true;
+    const toggleFavorite = () => {
+        if (title && eps) {
+            //compares the ids to find the selected movie
+            const selectedMovie = movieList.filter(film => film.episode_id === eps)[0];
+            if (favorite) {
+                setMovieList(movieList.map(
+                    movie => {
+                        return (movie === selectedMovie) ? changeFavorite(movie, false) : movie;
+                    }
+                ));
+                updateList(selectedMovie, true);
 
-    //     mounted && updateMovieList();
+            } else {
+                setMovieList(movieList.map(
+                    movie => {
+                        return (movie === selectedMovie) ? changeFavorite(movie, true) : movie;
+                    }
+                ));
+                updateList(selectedMovie, false);
+            }
 
-    //     return () => {
-    //         mounted = false;
-    //     };
-    // }, [favorite]);
+        }
+    };
 
     return (
         <div className={`movieCard`}>

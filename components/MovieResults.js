@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
 import { useMovieFetch, useMovieList } from '../context/MovieContext';
 import { useSearch } from '../context/SearchContext';
 import MovieCard from './MovieCard';
@@ -11,17 +10,17 @@ function MovieResults({ }) {
     const [filteredMovies, setFilteredMovies] = useState([]);
 
 
-    const moveToTop = (id, unfav) => {
+    const updateList = (movie, fav) => {
         if (movieList) {
-            const selectedMovie = filteredMovies.filter(film => film.episode_id === id)[0];
-            const updatedMovieList = filteredMovies.filter(film => film.episode_id !== id);
-            unfav ? updatedMovieList.push(selectedMovie) : updatedMovieList.unshift(selectedMovie);
+            const updatedMovieList = filteredMovies.filter(film => film !== movie);
+            fav ? updatedMovieList.push(movie) : updatedMovieList.unshift(movie);
             setFilteredMovies(updatedMovieList);
         }
     };
 
 
     const filterMovies = () => {
+
         try {
             setFilteredMovies(
                 movieList.filter(film =>
@@ -31,6 +30,7 @@ function MovieResults({ }) {
     };
 
     useEffect(() => {
+        console.log(filteredMovies);
         if (movieList) {
             filterMovies();
         }
@@ -46,11 +46,11 @@ function MovieResults({ }) {
                 filteredMovies.map(movie => (
                     <MovieCard
                         key={movie.episode_id}
-                        url={movie.url}
+                        favorite={movie.favorite}
                         eps={movie.episode_id}
                         title={movie.title}
                         release={movie.release_date}
-                        updateList={moveToTop}
+                        updateList={updateList}
                     />
                 ))
             )}

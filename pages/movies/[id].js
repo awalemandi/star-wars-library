@@ -61,7 +61,7 @@ export default function Movie({ movie }) {
                             movie.characters.map(
                                 characterUrl => <
                                     CharacterChip
-                                    key={Math.random()*99}
+                                    key={Math.random() * 99}
                                     url={characterUrl}
                                 />
                             )}

@@ -1,5 +1,7 @@
-import Button from "../../components/Button";
+import Button from "../../components/common/Button";
 import { AiOutlineRollback } from 'react-icons/ai';
+import Link from 'next/link';
+import Head from 'next/head';
 import axios from 'axios';
 
 export const getStaticPaths = async () => {
@@ -31,17 +33,29 @@ export const getStaticProps = async (context) => {
 export default function Movie({ movie }) {
     return (
         <div className='content'>
+            <Head>
+                <title>{movie.title}</title>
+            <link rel="icon" href="/images/favicon.ico" /></Head>
             <div className='moviePage'>
-            <div className='backButton'><Button label="Movies" icon={<AiOutlineRollback />} /></div>
-            <div className='movieDetails'>
-                <h2>Episode: {movie.episode_id}</h2>
-                <h1>{movie.title}</h1>
-                <h3>Directed by: {movie.director}</h3>
-                <h3>Produced by: {movie.producer}</h3>
-                <h3>Release: {movie.release_date}</h3>
-                <p>{movie.opening_crawl}</p>
-                <div className='charactersList'>{movie.title}</div>
-            </div>
+                <Link href='/'>
+                    <div className='backButton'>
+                        <Button label="Movies" icon={<AiOutlineRollback />} />
+                    </div>
+                </Link>
+                <div className='movieDetails'>
+                    <h2>Episode: {movie.episode_id}</h2>
+                    <h1>{movie.title}</h1>
+                    <h3>Directed by: {movie.director}</h3>
+                    <h3>Produced by: {movie.producer}</h3>
+                    <h3>Release: {movie.release_date}</h3>
+                    <p>{movie.opening_crawl}</p>
+                    <h3>Characters:</h3>
+                    {console.log(movie.characters)}
+                    {/* {
+                movie.characters.map(
+                    characterUrl => <CharacterChip url={characterUrl} />
+                    )} */}
+                </div>
             </div>
         </div>
     );

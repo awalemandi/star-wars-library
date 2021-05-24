@@ -1,12 +1,12 @@
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import darkLogo from '../public/images/logo_white.png';
-import lightLogo from '../public/images/logo_black.png';
-import darkIcon from '../public/images/dark_icon.png';
-import lightIcon from '../public/images/light_icon.png';
-import Search from './Search';
+import darkLogo from '../../public/images/logo_white.png';
+import lightLogo from '../../public/images/logo_black.png';
+import darkIcon from '../../public/images/dark_icon.png';
+import lightIcon from '../../public/images/light_icon.png';
+import Search from '../Search';
 
 
 function Nav() {

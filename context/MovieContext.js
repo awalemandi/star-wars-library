@@ -22,7 +22,7 @@ export function MovieProvider({ children }) {
 
         const getMovieList = async () => {
             const list = await movieData;
-            setMovieList(movieData);
+            setMovieList(movieData.results);
         };
 
         mounted && getMovieList();

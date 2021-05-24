@@ -14,7 +14,7 @@ function useFetch(url) {
                 const res = await axios.get(url, {
                     cancelToken: source.token
                 });
-                setResponse(res.data.results);
+                setResponse(res.data);
             } catch (error) {
                 console.log(axios.isCancel(error) ? 'Caught cancel' : error);
             } finally {

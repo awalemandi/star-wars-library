@@ -3,6 +3,7 @@ import { AiOutlineRollback } from 'react-icons/ai';
 import Link from 'next/link';
 import Head from 'next/head';
 import axios from 'axios';
+import CharacterChip from '../../components/CharacterChip';
 
 export const getStaticPaths = async () => {
     const res = await axios.get('https://swapi.dev/api/films/');
@@ -35,7 +36,7 @@ export default function Movie({ movie }) {
         <div className='content'>
             <Head>
                 <title>{movie.title}</title>
-            <link rel="icon" href="/images/favicon.ico" /></Head>
+                <link rel="icon" href="/images/favicon.ico" /></Head>
             <div className='moviePage'>
                 <Link href='/'>
                     <div className='backButton'>
@@ -51,10 +52,12 @@ export default function Movie({ movie }) {
                     <p>{movie.opening_crawl}</p>
                     <h3>Characters:</h3>
                     {console.log(movie.characters)}
-                    {/* {
-                movie.characters.map(
-                    characterUrl => <CharacterChip url={characterUrl} />
-                    )} */}
+                    <div className='characterContainer'>
+                        {
+                            movie.characters.map(
+                                characterUrl => <CharacterChip url={characterUrl} />
+                            )}
+                    </div>
                 </div>
             </div>
         </div>

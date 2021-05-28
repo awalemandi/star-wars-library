@@ -13,13 +13,11 @@ function MovieResults({ }) {
         if (movieList) {
             const updatedMovieList = filteredMovies.filter(film => film.title !== movie.title);
             fav ? updatedMovieList.unshift(movie) : updatedMovieList.push(movie);
-            // setFilteredMovies(updatedMovieList);
             setMovieList(updatedMovieList);
         }
     };
 
     const filterMovies = () => {
-
         try {
             setFilteredMovies(
                 movieList.filter(film =>
@@ -30,8 +28,6 @@ function MovieResults({ }) {
 
     useEffect(() => {
         if (movieList) {
-            console.log(`most recent movieList is: `);
-            console.log(movieList);
             filterMovies();
         }
     }, [searchField, movieList]);

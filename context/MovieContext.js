@@ -38,7 +38,7 @@ export function MovieProvider({ children }) {
         mounted && getMovieList();
         return () => { mounted = false; };
 
-    }, [movieData]);
+    }, []);
 
     return (
         <MovieFetchContext.Provider value={[loading]}>

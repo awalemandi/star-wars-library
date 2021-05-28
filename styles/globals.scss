@@ -209,6 +209,9 @@ nav {
 
 			@include md() {
 				height: 60%;
+				@include themify() {
+					background-color: themed($bg);
+				}
 			}
 		}
 	}
@@ -228,7 +231,7 @@ footer {
 }
 
 .content {
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 	margin: 0;
 	padding: 0 5rem;
@@ -251,7 +254,7 @@ footer {
 	margin-top: 5%;
 	width: 80%;
 	min-width: none;
-	height: 90%;
+	height: 50rem;
 	padding: 2rem 2rem;
 	display: flex;
 	flex-direction: column;
@@ -266,6 +269,7 @@ footer {
 	}
 
 	@include md() {
+		min-height: 40rem;
 		padding: 1rem;
 	}
 }

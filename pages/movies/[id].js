@@ -39,7 +39,7 @@ export default function Movie({ movie }) {
     return (
         <div className='content'>
             <Head>
-                <title>{movie.title}</title>
+                <title>Episode {movie.episode_id} | {movie.title}</title>
                 <link rel="icon" href="/images/favicon.ico" /></Head>
             <div className='moviePage'>
                 <Link href='/'>

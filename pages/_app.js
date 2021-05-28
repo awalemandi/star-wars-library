@@ -2,7 +2,7 @@ import { ThemeProvider, useTheme } from '../context/ThemeContext';
 import { SearchProvider } from '../context/SearchContext';
 import '../styles/globals.scss';
 import Layout from '../components/layout/Layout';
-import { MovieProvider, useMovieFetch } from '../context/MovieContext';
+import { MovieProvider } from '../context/MovieContext';
 
 function withContext(Component) {
   return (props) => (

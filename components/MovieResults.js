@@ -9,6 +9,7 @@ function MovieResults({ }) {
     const [movieList, setMovieList] = useMovieList();
     const [filteredMovies, setFilteredMovies] = useState([]);
 
+    //move the favorite movie to the top or unfavorite to bottom
     const updateList = (movie, fav) => {
         if (movieList) {
             const updatedMovieList = filteredMovies.filter(film => film.title !== movie.title);
@@ -17,6 +18,7 @@ function MovieResults({ }) {
         }
     };
 
+    //filters the movielist based on searchField
     const filterMovies = () => {
         try {
             setFilteredMovies(

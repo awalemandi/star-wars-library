@@ -9,19 +9,14 @@ function MovieResults({ }) {
     const [movieList, setMovieList] = useMovieList();
     const [filteredMovies, setFilteredMovies] = useState([]);
 
-
     const updateList = (movie, fav) => {
         if (movieList) {
-            const updatedMovieList = filteredMovies.filter(film => film !== movie);
+            const updatedMovieList = filteredMovies.filter(film => film.title !== movie.title);
             fav ? updatedMovieList.unshift(movie) : updatedMovieList.push(movie);
-            setFilteredMovies(updatedMovieList);
-            console.log('updated Movie is: ');
-            console.log(movie);
-            console.log('updatedMovieList is: ');
-            console.log(updatedMovieList);
+            // setFilteredMovies(updatedMovieList);
+            setMovieList(updatedMovieList);
         }
     };
-
 
     const filterMovies = () => {
 

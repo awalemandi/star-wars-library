@@ -2,35 +2,21 @@ import { useState, useEffect } from 'react';
 import { RiHeartAddLine, RiHeart3Fill } from 'react-icons/ri';
 import { useMovieList } from '../context/MovieContext';
 import Link from 'next/link';
-import useLocalStorage from '../hooks/useLocalStorage';
-
 
 function MovieCard({ favorite, eps, title, release, updateList, currentMovie }) {
     const [movieList, setMovieList] = useMovieList();
+    const [isFavorite, setIsFavorite] = useState(favorite ? true : false);
+    // const [favoriteIcon, setFavoriteIcon] = useState(<RiHeartAddLine />);
 
     const changeFavorite = (obj, fav) => {
         return ({ ...obj, favorite: fav });
     };
 
     const toggleFavorite = () => {
-        if (title && eps) {
-            if (favorite) {
-                setMovieList(movieList.map(
-                    movie => {
-                        return (movie.title === title) ? changeFavorite(movie, false) : movie;
-                    }
-                ));
-                updateList(currentMovie, false);
+        setIsFavorite(!favorite);
+        const updatedMovie = changeFavorite(currentMovie, !isFavorite);
+        updateList(updatedMovie, !isFavorite);
 
-            } else {
-                setMovieList(movieList.map(
-                    movie => {
-                        return (movie.title === title) ? changeFavorite(movie, true) : movie;
-                    }
-                ));
-                updateList(currentMovie, true);
-            }
-        }
     };
 
     return (

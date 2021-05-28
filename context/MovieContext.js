@@ -26,19 +26,19 @@ export function MovieProvider({ children }) {
 
     useEffect(() => {
         let mounted = true;
-        //add favorite: false to each movie object
-        const getMovieList = async () => {
-            const list = await movieData.results;
-            if (list) {
-                const updatedMovies = await list.map(movie => ({ ...movie, favorite: false }));
-                setMovieList(updatedMovies);
-            }
-        };
+            //add favorite: false to each movie object
+            const getMovieList = async () => {
+                const list = await movieData.results;
+                if (list) {
+                    const updatedMovies = await list.map(movie => ({ ...movie, favorite: false }));
+                    setMovieList(updatedMovies);
+                }
+            };
 
-        mounted && getMovieList();
+            mounted && getMovieList();
         return () => { mounted = false; };
 
-    }, []);
+    }, [movieData]);
 
     return (
         <MovieFetchContext.Provider value={[loading]}>

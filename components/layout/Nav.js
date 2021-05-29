@@ -8,33 +8,35 @@ import lightIcon from '../../public/images/light_icon.png';
 import Search from '../Search';
 
 
-function Nav() {
-    const [darkMode, setDarkMode] = useTheme();
+function Nav () {
+    const [ darkMode, setDarkMode ] = useTheme();
     const router = useRouter();
 
     const handleTheme = () => {
-        setDarkMode(!darkMode);
+        setDarkMode( !darkMode );
     };
     return (
         <nav>
-            <div className={`iconsContainer`}>
+            <div className={ `iconsContainer` }>
                 <Link href="/" >
-                    <img
-                        className={`logo`}
-                        src={darkMode ? darkLogo : lightLogo}
+                    <a><
+                        img
+                        className={ `logo` }
+                        src={ darkMode ? darkLogo : lightLogo }
                         alt='logo'
                     />
+                    </a>
                 </Link>
                 <img
-                    className={`themeIcon`}
-                    src={darkMode ? darkIcon : lightIcon}
+                    className={ `themeIcon` }
+                    src={ darkMode ? darkIcon : lightIcon }
                     alt='toggle theme'
-                    onClick={handleTheme}
+                    onClick={ handleTheme }
                 />
             </div>
-            <div className={`navItemsContainer`}>
+            <div className={ `navItemsContainer` }>
                 <Link href="/" >
-                    <div className={router.pathname == '/' ? `activeLinkItem` : `linkItem`}>HOME</div>
+                    <div className={ router.pathname == '/' ? `activeLinkItem` : `linkItem` }>HOME</div>
                 </Link>
                 <Search />
             </div>
